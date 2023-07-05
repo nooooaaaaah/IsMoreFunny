@@ -1,0 +1,15 @@
+nav {
+  background-color: #7cbec8;
+  padding: 10px;
+}
+
+a {
+  margin-right: 10px;
+  color: #b98dcb;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a94e80;
+}
+

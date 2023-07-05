@@ -1,1 +1,8 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleMenu()">
+        <mat-icon svgIcon="">-</mat-icon>
+    </button>
+    <div [hidden]="isMenuCollapsed">
+        <a routerLink="/">Home</a>
+        <a routerLink="/voting">Voting</a>
+    </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movie',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent {
-
+  @Input() imageUrl: string | undefined;
+  @Input() movieTitle: string | undefined;
 }
