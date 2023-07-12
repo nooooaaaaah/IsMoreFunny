@@ -1,4 +1,14 @@
 .movie-image {
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: auto;
+}
+@media (max-width: 765px) {
+    .movie-image {
+        width: 200px;
+    }
+}
+@media (max-width: 575px) {
+    .movie-image {
+        width: 150px;
+    }
 }

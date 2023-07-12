@@ -1,12 +1,24 @@
 <h1 class="text-center">Which is more funny</h1>
-<div class="d-flex movie-container mt-5">
-    <div>
-        <app-movie [imageUrl]="'https://rb.gy/61heb'" [movieTitle]="'Grandma\'s Boy'"></app-movie>
-        <button class="btn btn-primary button">Vote</button>
-    </div>
-    <h3>vs</h3>
-    <div>
-        <app-movie [imageUrl]="'https://rb.gy/p2566'" [movieTitle]="'Strange Wilderness'"></app-movie>
-        <button class="btn btn-primary button">Vote</button>
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <button class="col btn p-3" (click)="changeMovie2()">
+            <app-movie [imageUrl]="movie1.poster_path" [movieTitle]="movie1.title"></app-movie>
+        </button>
+        <div class="col text-center">
+            <h3>vs</h3>
+            <p class="text-center">
+                <ng-container *ngIf="chosenMovie1Count !== 0; else chosenMovie2Section">
+                    You've chosen {{ chosenMovie?.title }} {{ chosenMovie1Count }} times
+                </ng-container>
+                <ng-template #chosenMovie2Section>
+                    <ng-container *ngIf="chosenMovie2Count !== 0">
+                        You've chosen {{ chosenMovie?.title }} {{ chosenMovie2Count }} times
+                    </ng-container>
+                </ng-template>
+            </p>
+        </div>
+        <button class="col btn" (click)="changeMovie1()">
+            <app-movie class="align-self-start" [imageUrl]="movie2.poster_path" [movieTitle]="movie2.title"></app-movie>
+        </button>
     </div>
 </div>

@@ -1,4 +1,4 @@
 export interface Movie {
-    title: string;
-    poster_path: string;
+    title: string | undefined;
+    poster_path: string | undefined;
 }

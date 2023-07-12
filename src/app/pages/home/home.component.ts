@@ -7,5 +7,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  onclick =()=>{console.log("Matt is Dewey")}
 
 }
