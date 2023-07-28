@@ -70,6 +70,5 @@ export class VotingComponent implements OnInit {
     if (this.movieSubscription) {
       this.movieSubscription.unsubscribe();
     }
-
   }
 }

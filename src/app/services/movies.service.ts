@@ -5,6 +5,9 @@ import { Movie } from 'src/app/models/movieModel';
 
 const randomNumber = Math.floor(Math.random() * 11) + 1;
 
+//!   Finish comedy Movies 
+//    todo
+//*   Observable<Movie[]> to Movie[]
 
 @Injectable({
   providedIn: 'root'
@@ -21,15 +24,41 @@ export class MoviesService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.apiToken}`
     });
-    console.log(this.apiUrl)
+    console.log(this.apiUrl);
     return this.http.get<any>(this.apiUrl, { headers }).pipe(
       map(response => response.results),
       map(movies => movies.map((movie: { title: string; poster_path: string; }) => ({
         title: movie.title,
         poster_path: this.imageUrl + movie.poster_path
       }))),
-      map(movies => this.getRandomMovies(movies, 2)
-    ));
+      map(movies => this.getRandomMovies(this.getComedyMovies(), 2)
+      ));
+  }
+  comedyMovies(): Observable<Movie[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.apiToken}`
+    });
+    // console.log(this.apiUrl);
+    return this.http.get<any>(this.apiUrl, { headers }).pipe(
+      map(response => response.results),
+      map(movies => movies.map((movie: { title: string; poster_path: string; }) => ({
+        title: movie.title,
+        poster_path: this.imageUrl + movie.poster_path
+      }))))
+  }
+
+  private getComedyMovies(): Movie[] {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.apiToken}`
+    });
+    // console.log(this.apiUrl);
+    const get = this.http.get<any>(this.apiUrl, { headers }).pipe(
+      map(movies => movies.map((movie: { title: string; poster_path: string; }) => ({
+        title: movie.title,
+        poster_path: this.imageUrl + movie.poster_path
+      }))))
+    return [{title: 'a', poster_path: ''}]
+
   }
 
   private getRandomMovies(movies: Movie[], count: number): Movie[] {
